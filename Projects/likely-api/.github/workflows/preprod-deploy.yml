@@ -1,0 +1,51 @@
+name: auto-deploy-preprod
+
+on:
+  pull_request:
+    branches:
+      - preprod
+    types: [ closed ]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  update-repo:
+    name: 'update preprod repo'
+    if: github.event.pull_request.merged == true
+    runs-on: self-hosted
+    steps:
+      - name: perform a git pull command
+        working-directory: /var/www/docker/likely/preprod
+        run: |
+          git checkout preprod
+          git branch --set-upstream-to=origin/preprod preprod
+          git reset --hard origin/preprod
+          git pull
+
+  remove-old-containers:
+    needs: update-repo
+    name: 'remove old containers'
+    runs-on: self-hosted
+    steps:
+      - name: stop and remove old containers
+        run: docker ps -aq --filter "name=likely-pp" | xargs -r docker rm -f
+
+
+  remove-old-images:
+    needs: remove-old-containers
+    name: 'remove old images'
+    runs-on: self-hosted
+    steps:
+      - name: stop and remove old images
+        run: docker images --filter=reference='likely-backend-pp' --format "{{.Repository}}" |  xargs -r docker rmi
+
+  rerun-backend-service:
+    needs: remove-old-images
+    name: 'rerun the backend services'
+    runs-on: self-hosted
+    steps:
+      - name: rerun the service with compose
+        working-directory: /var/www/docker/likely/preprod
+        run: docker-compose up -d

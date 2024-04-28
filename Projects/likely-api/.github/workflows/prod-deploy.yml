@@ -1,0 +1,49 @@
+name: manual-deploy-prod
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+
+jobs:
+  update-repo:
+    name: 'update prod repo'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/prod'
+    runs-on: self-hosted
+    steps:
+      - name: perform a git pull command
+        working-directory: /var/www/docker/likely/prod
+        run: |
+          git checkout prod
+          git branch --set-upstream-to=origin/prod prod
+          git reset --hard origin/prod
+          git pull
+
+  remove-old-containers:
+    needs: update-repo
+    name: 'remove old containers'
+    runs-on: self-hosted
+    steps:
+      - name: stop and remove old containers
+        run: docker ps -aq --filter "name=likely-prod" | xargs -r docker rm -f
+
+
+  remove-old-images:
+    needs: remove-old-containers
+    name: 'remove old images'
+    runs-on: self-hosted
+    steps:
+      - name: stop and remove old images
+        run: docker images --filter=reference='likely-backend-prod' --format "{{.Repository}}" |  xargs -r docker rmi
+
+  rerun-backend-service:
+    needs: remove-old-images
+    name: 'rerun the backend services'
+    runs-on: self-hosted
+    steps:
+      - name: rerun the service with compose
+        working-directory: /var/www/docker/likely/prod
+        run: docker-compose up -d
