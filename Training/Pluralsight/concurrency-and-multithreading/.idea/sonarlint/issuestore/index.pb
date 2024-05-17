@@ -27,3 +27,5 @@ G.idea/sonarlint/issuestore/3/a/3a1f3b8d79f7f74ae8ee86cf15078bf944eb62c9,3/a/3a
 Q.idea/sonarlint/securityhotspotstore/3/a/3a1f3b8d79f7f74ae8ee86cf15078bf944eb62c9,c/8/c8962f151a040ddb67916d8da5d7dabe75229cba
 Å
 Q.idea/sonarlint/securityhotspotstore/e/4/e454d99d9528b1749e2694fb4e4ae59eb140f1a9,9/1/919f440595f53e4e68f6136fa13497d1e0ec2ef1
+]
+-src/main/java/sample/SingleSubmitExample.java,4/5/45a5f6da1653eb89179f882b405ced94e40a210a
