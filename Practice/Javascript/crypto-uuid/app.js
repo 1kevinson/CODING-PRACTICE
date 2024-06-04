@@ -1,4 +1,4 @@
-import { randomUuid } from "@web5/crypto";
+import * as crypto from "./node_modules/@web5/crypto/dist/utils.js";
 
-const uuid = randomUuid();
+const uuid = crypto.randomUUID();
 console.log(uuid);
