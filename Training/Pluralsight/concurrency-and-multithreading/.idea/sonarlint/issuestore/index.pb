@@ -29,3 +29,6 @@ Q.idea/sonarlint/securityhotspotstore/3/a/3a1f3b8d79f7f74ae8ee86cf15078bf944eb62
 Q.idea/sonarlint/securityhotspotstore/e/4/e454d99d9528b1749e2694fb4e4ae59eb140f1a9,9/1/919f440595f53e4e68f6136fa13497d1e0ec2ef1
 ]
 -src/main/java/sample/SingleSubmitExample.java,4/5/45a5f6da1653eb89179f882b405ced94e40a210a
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
