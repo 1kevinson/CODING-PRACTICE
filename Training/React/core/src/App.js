@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
+import {Button} from "antd";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [count, setCount] = useState(0)
+
+    function handleClick() {
+        setCount(count + 1)
+    }
+
+    return (
+        <div>
+            <h2>Counter that update separately</h2>
+            <MyButton handleclick={handleClick} count={count} />
+            <MyButton handleclick={handleClick} count={count} />
+        </div>
+    );
 }
 
-export default App;
+function MyButton({ ...props }) {
+
+    return (
+        <Button type={"primary"} onClick={props.handleclick} className="blue-button">
+            Clicked {props.count} times
+        </Button>
+    );
+}
