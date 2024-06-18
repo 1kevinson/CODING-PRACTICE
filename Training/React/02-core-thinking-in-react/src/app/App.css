@@ -5,8 +5,9 @@
 
 .work-zone {
     background: white;
-    height: 85vh;
+    height: 86vh;
     border-radius: 5px;
+    padding: 1rem;
 }
 
 .title--work-zone {
