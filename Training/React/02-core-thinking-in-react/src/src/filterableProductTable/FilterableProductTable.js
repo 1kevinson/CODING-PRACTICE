@@ -5,8 +5,8 @@ import ProductTable from "../productTable/ProductTable";
 export default function FilterableProductTable({products}) {
     return (
         <div>
-            <SearchBar/>
-            <ProductTable className='product-table' products={products}/>
+            <SearchBar />
+            <ProductTable products={products}/>
         </div>
     )
 }

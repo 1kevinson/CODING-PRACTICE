@@ -1,4 +1,5 @@
 import {Table} from "antd";
+import './productTable.css'
 
 export default function ProductTable({products}) {
 
@@ -6,14 +7,13 @@ export default function ProductTable({products}) {
         {
             title: 'Name',
             dataIndex: 'name',
-            defaultSortOrder: 'ascend',
-            sorter: (a, b) => a.name.length - b.name.length
+            defaultSortOrder: 'ascending',
+            sorter: (a, b) => b.name.toLowerCase().localeCompare(a.name.toLowerCase())
         },
         {
             title: 'Price',
             dataIndex: 'price',
-            defaultSortOrder: 'ascend',
-            sorter: (a, b) => a.age - b.age,
+            sorter: (a, b) => a.price - b.price,
         },
         {
             title: 'Category',
@@ -21,12 +21,13 @@ export default function ProductTable({products}) {
         },
         {
             title: 'Stocked',
-            dataIndex: 'stocked'
+            render: (text, record) => (`${record.stocked}`)
         }
     ];
 
     return (
         <Table
+            className='product-table'
             columns={columns}
             dataSource={products}
             showSorterTooltip={{
