@@ -5,9 +5,9 @@ export default function ProductTable({ products, filterText, inStockOnly }) {
     const rows = [];
 
     products.forEach((product) => {
-        if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) return;
-        if (inStockOnly && !product.stocked) return;
-        rows.push(product)
+            if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) return;
+            if (inStockOnly && !product.stocked) return;
+            rows.push(product)
         }
     )
 
