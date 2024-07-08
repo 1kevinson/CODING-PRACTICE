@@ -1,8 +1,8 @@
 [
-  { "category": "Fruits", "price": "1", "stocked": true, "name": "Apple" },
-  { "category": "Fruits", "price": "1", "stocked": true, "name": "Dragon fruit" },
-  { "category": "Fruits", "price": "2", "stocked": false, "name": "Passion fruit" },
-  { "category": "Vegetables", "price": "2", "stocked": true, "name": "Spinach" },
-  { "category": "Vegetables", "price": "4", "stocked": false, "name": "Pumpkin" },
-  { "category": "Vegetables", "price": "1", "stocked": true, "name": "Peas" }
+  { "key" : "1", "category": "Fruits", "price": "1", "stocked": true, "name": "Apple" },
+  { "key" : "2", "category": "Fruits", "price": "7", "stocked": true, "name": "Dragon fruit" },
+  { "key" : "3", "category": "Fruits", "price": "2", "stocked": false, "name": "Passion fruit" },
+  { "key" : "4", "category": "Vegetables", "price": "2", "stocked": true, "name": "Spinach" },
+  { "key" : "5", "category": "Vegetables", "price": "4", "stocked": false, "name": "Pumpkin" },
+  { "key" : "6", "category": "Vegetables", "price": "1", "stocked": true, "name": "Peas" }
 ]
