@@ -1,7 +1,15 @@
 import { Table } from "antd";
 import './productTable.css'
 
-export default function ProductTable({ products }) {
+export default function ProductTable({ products, filterText, inStockOnly }) {
+    const rows = [];
+
+    products.forEach((product) => {
+        if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) return;
+        if (inStockOnly && !product.stocked) return;
+        rows.push(product)
+        }
+    )
 
     const columns = [
         {
@@ -33,7 +41,7 @@ export default function ProductTable({ products }) {
         <Table
             className='product-table'
             columns={columns}
-            dataSource={products}
+            dataSource={rows}
             showSorterTooltip={{
                 target: 'sorter-icon',
             }}
