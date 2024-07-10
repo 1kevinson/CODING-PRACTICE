@@ -1,0 +1,22 @@
+.container {
+    background: #0b2b39;
+    padding: 1.25rem 3rem 3.15rem 3rem;
+}
+
+.work-zone {
+    background: white;
+    height: 85vh;
+    border-radius: 5px;
+}
+
+.title--work-zone {
+    display: grid;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2.75rem;
+    color: rgba(255, 255, 0, 0.75);
+}
+
+.title--zone {
+    margin-bottom: 1rem;
+}
