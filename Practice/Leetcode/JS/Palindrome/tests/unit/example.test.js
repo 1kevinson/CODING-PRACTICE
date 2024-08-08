@@ -1,10 +1,21 @@
-const request = require('supertest');
-const app = require('../../src/app');
+const Main = require("../../src/Main");
 
-describe('GET /', () => {
-    it('should return Hello, Express Node.js!', async () => {
-        const res = await request(app).get('/');
-        expect(res.statusCode).toEqual(200);
-        expect(res.text).toBe("Hello, Express Node.js!");
+let executor;
+
+beforeEach(()=> {
+    executor = new Main();
+})
+
+describe('Basic tests', () => {
+    it('should check that the number is a palindrome', () => {
+        expect(executor.isPalindrome(121)).toBeTruthy();
+    });
+
+    it('should check that the negative number is a palindrome', () => {
+        expect(executor.isPalindrome(-121)).toBeFalsy();
+    });
+
+    it('should check that the 2 size number is a palindrome', () => {
+        expect(executor.isPalindrome(10)).toBeFalsy();
     });
 });
