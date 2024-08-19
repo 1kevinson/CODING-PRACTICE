@@ -34,4 +34,8 @@ describe('Basic tests', () => {
     it('should return the number 2024', () => {
         expect(executor.transformRomanToInteger("MMXXIV")).toEqual(2024);
     });
+
+    it('should return the number 49', () => {
+        expect(executor.transformRomanToInteger("XLIX")).toEqual(49);
+    });
 });
