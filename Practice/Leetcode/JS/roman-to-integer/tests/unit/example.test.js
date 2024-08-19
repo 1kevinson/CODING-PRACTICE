@@ -38,4 +38,8 @@ describe('Basic tests', () => {
     it('should return the number 49', () => {
         expect(executor.transformRomanToInteger("XLIX")).toEqual(49);
     });
+
+    it('should return the number 20', () => {
+        expect(executor.transformRomanToInteger("XX")).toEqual(20);
+    });
 });
